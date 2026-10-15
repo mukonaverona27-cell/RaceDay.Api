@@ -27,6 +27,7 @@ User Roles
 
 • Controllers/ — API endpoints
 
+
 • Models/ — Database models & DTOs
 
 • Data/ — Database context
@@ -46,6 +47,22 @@ Test project: RaceDay.Api.Tests — Run in Visual Studio Test Explorer — 2 Tes
  CI/CD — GitHub Actions
 
 Workflow file: .github/workflows/ci.yml — Automatically builds and tests on every commit.
+## 📸 Screenshots
+
+### Swagger UI
+<img width="995" height="487" alt="unit test" src="https://github.com/user-attachments/assets/7787760d-9c83-4f51-9c64-279315c616e0" />
+<img width="1903" height="942" alt="endpoints" src="https://github.com/user-attachments/assets/a069345b-1101-4b38-b57b-76b81529d10e" />
+<img width="1903" height="942" alt="endpoints" src="https://github.com/user-attachments/assets/c3e2972d-4180-412f-9920-ab710f762851" />
+
+### Unit Tests
+<img width="995" height="487" alt="Screenshot 2026-10-15 212157" src="https://github.com/user-attachments/assets/c0f4bea9-4541-46cf-a67c-3179b353e7cb" />
+![Uploading unit test.png…]()
+
+### CI/CD — GitHub Actions
+*(Paste your ci.yml file screenshot here)*
+
+## 🎥 Video Demonstration
+https://www.youtube.com/watch?v=your-video-code-here
 
 (Screenshot of CI/CD pipeline goes here)
 
