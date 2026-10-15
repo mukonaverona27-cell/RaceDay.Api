@@ -55,14 +55,10 @@ Workflow file: .github/workflows/ci.yml — Automatically builds and tests on ev
 ![Uploading unit test.png…]()
 
 ### CI/CD — GitHub Actions
-*(Paste your ci.yml file screenshot here)*
+
 
 ## 🎥 Video Demonstration
-https://www.youtube.com/watch?v=your-video-code-here
-
-(Screenshot of CI/CD pipeline goes here)
+https://youtu.be/vle7RSolGOE
 
  Video Demonstration
 
-(Paste your YouTube video link here)
-Thank you for reviewing my submission! ✨
