@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - RaceDay</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RaceDay.Web.styles.css" asp-append-version="true" />
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --race-dark: #0a1729; /* Deep navy from your image */
+            --race-blue: #142b4a; /* Original navbar blue */
+            --race-electric: #1e90ff; /* Bright blue accent */
+            --race-orange: #ff8c42; /* Button accent */
+        }
+
+        body {
+            background: #f4f6fa;
+            font-family: 'Segoe UI', sans-serif;
+            color: #25344a;
+            margin: 0;
+            /* Subtle checkered background pattern for the whole page */
+            background-image: linear-gradient(45deg, #e6ecf5 25%, transparent 25%), linear-gradient(-45deg, #e6ecf5 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e6ecf5 75%), linear-gradient(-45deg, transparent 75%, #e6ecf5 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background: var(--race-dark);
+            padding: 16px 0;
+            border-bottom: 3px solid var(--race-electric);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav .nav-link {
+            color: #e8eef8 !important;
+            font-size: 15px;
+            margin-left: 15px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: var(--race-orange) !important;
+            }
+
+        .navbar-toggler {
+            border-color: white;
+        }
+
+        .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        /* --- HERO SECTION (The Racing Banner) --- */
+        .hero-racing {
+            position: relative;
+            background: linear-gradient(135deg, var(--race-dark) 0%, #1a3a6b 100%);
+            /* You can replace the URL below with the actual path to your chosen background image */
+            /* background-image: url('/images/racing-bg.jpg'); */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            overflow: hidden;
+            border-bottom: 5px solid var(--race-orange);
+        }
+
+            /* The checkered flag effect overlay */
+            .hero-racing::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%), linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
+                background-size: 40px 40px;
+                background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+                opacity: 0.5;
+                z-index: 1;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Placeholder for the Blue Car Image */
+        .car-image-container {
+            position: relative;
+            text-align: right;
+        }
+
+        .car-image-placeholder {
+            /* This creates a placeholder shape for the car */
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to right, transparent, var(--race-electric));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-style: italic;
+            border: 2px dashed rgba(255,255,255,0.3);
+        }
+
+        /* --- BUTTONS --- */
+        .btn-raceday {
+            background: var(--race-orange);
+            color: white !important;
+            border-radius: 6px;
+            padding: 10px 25px;
+            font-weight: 600;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(255, 140, 66, 0.3);
+        }
+
+            .btn-raceday:hover {
+                background: #e8752c;
+                transform: translateY(-2px);
+            }
+
+        .btn-outline-light {
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- GENERAL --- */
+        h1, h2, h3, h4 {
+            color: var(--race-blue);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Make cards pop against the checkered background */
+        .card {
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 15px rgba(20, 43, 74, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--race-dark);
+            color: #dce5f2;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 3px solid var(--race-orange);
+        }
+
+            footer a {
+                color: var(--race-orange);
+            }
+
+                footer a:hover {
+                    color: white;
+                }
+
+        main {
+            min-height: 75vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    RaceDay<span style="color:var(--race-orange);">.</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            if (User.IsInRole("Organiser"))
+                            {
+                                <li class="nav-item"><a class="nav-link" asp-controller="Organiser" asp-action="Dashboard">Organiser</a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item"><a class="nav-link" asp-controller="Participant" asp-action="Dashboard">Runner</a></li>
+                            }
+                            <li class="nav-item"><span class="nav-link text-white-50">Hi, @User.Identity.Name</span></li>
+                            <li class="nav-item">
+                                <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Login">Login</a></li>
+                            <li class="nav-item"><a class="btn btn-raceday ms-2" asp-controller="Auth" asp-action="Register">Register</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main role="main">
+
+        <!-- HERO / RACING BANNER -->
+        <!-- Only show this if we are on the Home/Index page (Optional logic) -->
+        @if (ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index")
+        {
+            <section class="hero-racing">
+                <div class="container hero-content">
+                    <div class="row align-items-center">
+                        <!-- Text Content -->
+                        <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+                            <h1 class="display-4 fw-bold text-white mb-3" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                                SPEED. ENDURANCE. <span style="color:var(--race-orange);">COMMUNITY.</span>
+                            </h1>
+                            <p class="lead text-light mb-4" style="opacity: 0.9;">
+                                Join the ultimate racing and running events. Track your progress, connect with athletes, and dominate the pavement.
+                            </p>
+                            <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                                <a href="#" class="btn btn-raceday btn-lg">Find a Race</a>
+                                <a href="#" class="btn btn-outline-light btn-lg">Learn More</a>
+                            </div>
+                        </div>
+
+                        
+    
+                    </div>
+                </div>
+            </section>
+        }
+
+        <!-- BODY CONTENT -->
+        <div class="container mt-5">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <h5 class="text-white fw-bold">RaceDay.</h5>
+            <p class="mb-2">Connecting runners, cyclists and sports communities.</p>
+            <small>
+                &copy; 2026 RaceDay. All Rights Reserved. |
+                <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+            </small>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

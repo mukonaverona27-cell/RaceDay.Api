@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Event Organiser Dashboard";
+}
+
+<h1>My Organiser Dashboard</h1>
+<p class="lead">Welcome back! Manage your race events here.</p>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card p-4 mb-3">
+            <h5>Create New Event</h5>
+            <p>Set up and publish a new race</p>
+            <a href="#" class="btn btn-primary w-100">Add Event</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-4 mb-3">
+            <h5>View Participants</h5>
+            <p>See who has registered for your events</p>
+            <a href="#" class="btn btn-primary w-100">View Entries</a>
+        </div>
+    </div>
+</div>
+
+<p class="mt-4">
+    <a asp-action="Dashboard" asp-controller="Participant" class="me-3">Runner View</a>
+</p>

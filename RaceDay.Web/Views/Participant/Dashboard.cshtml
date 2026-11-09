@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Runner Dashboard";
+}
+
+<h1>My Runner Dashboard</h1>
+<p class="lead">@ViewBag.Message</p>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card p-4 mb-3">
+            <h5>Upcoming Events</h5>
+            <p>View and enter races</p>
+            <a href="@Url.Action("MyEvents", "Participant")" class="btn btn-primary w-100">Browse Events</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-4 mb-3">
+            <h5>My Race History</h5>
+            <p>Check your times and positions</p>
+            <a href="#" class="btn btn-primary w-100">View Results</a>
+        </div>
+    </div>
+</div>
+
+<p class="mt-4">
+    <a asp-action="Dashboard" asp-controller="Organiser" class="me-3">Organiser View</a>
+</p>

@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container text-center py-5">
+    <h1 class="display-4">Welcome to RaceDay<span style="color:#ff8c42;">.</span></h1>
+    <p class="lead">Connecting runners, cyclists and sports communities.</p>
+    @if (User.Identity?.IsAuthenticated != true)
+    {
+        <a class="btn btn-raceday me-2" asp-controller="Auth" asp-action="Login">Login</a>
+        <a class="btn btn-outline-secondary" asp-controller="Auth" asp-action="Register">Register</a>
+    }
+</div>
