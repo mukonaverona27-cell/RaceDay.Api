@@ -17,7 +17,7 @@ namespace RaceDay.Api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "8.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -362,11 +362,11 @@ namespace RaceDay.Api.Migrations
 
             modelBuilder.Entity("RaceDay.Api.Models.RaceEntry", b =>
                 {
-                    b.Property<int>("EntryId")
+                    b.Property<int>("RaceEntryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EntryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RaceEntryId"));
 
                     b.Property<int>("ParticipantId")
                         .HasColumnType("int");
@@ -374,19 +374,9 @@ namespace RaceDay.Api.Migrations
                     b.Property<int>("RaceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("RegistrationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("EntryId");
+                    b.HasKey("RaceEntryId");
 
                     b.HasIndex("ParticipantId");
-
-                    b.HasIndex("RaceId");
 
                     b.ToTable("RaceEntries");
                 });
@@ -504,21 +494,11 @@ namespace RaceDay.Api.Migrations
 
             modelBuilder.Entity("RaceDay.Api.Models.RaceEntry", b =>
                 {
-                    b.HasOne("RaceDay.Api.Models.Participant", "Participant")
+                    b.HasOne("RaceDay.Api.Models.Participant", null)
                         .WithMany("RaceEntries")
                         .HasForeignKey("ParticipantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("RaceDay.Api.Models.Race", "Race")
-                        .WithMany()
-                        .HasForeignKey("RaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Participant");
-
-                    b.Navigation("Race");
                 });
 
             modelBuilder.Entity("RaceDay.Api.Models.Result", b =>

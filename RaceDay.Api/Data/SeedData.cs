@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RaceDay.Api.Models;
 
 namespace RaceDay.Api.Data
 {
     public static class SeedData
     {
-        public static async Task Initialize(IServiceProvider serviceProvider)
+        public static async Task InitializeAsync(IServiceProvider serviceProvider)
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            string[] roles = { "Organiser", "Participant" };
-            foreach (var role in roles)
+            string[] roleNames = { "Organiser", "Participant" };
+            foreach (var roleName in roleNames)
             {
-                if (!await roleManager.RoleExistsAsync(role))
-                    await roleManager.CreateAsync(new IdentityRole(role));
+                if (!await roleManager.RoleExistsAsync(roleName))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
             }
         }
     }
