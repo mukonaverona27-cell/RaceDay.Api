@@ -57,8 +57,72 @@ Workflow file: .github/workflows/ci.yml — Automatically builds and tests on ev
 ### CI/CD — GitHub Actions
 
 
-## 🎥 Video Demonstration
-https://youtu.be/vle7RSolGOE
+RaceDay Web Application — Part 3
 
- Video Demonstration
+Project Overview
+
+RaceDay is a complete event management system built with ASP.NET Core MVC for the frontend and ASP.NET Core Web API for the backend. This is Part 3 of the project, covering the web application interface, user authentication, and role-based dashboards.
+
+Technologies Used
+
+• Frontend: ASP.NET Core MVC, Razor Views, Bootstrap
+
+• Backend: ASP.NET Core Web API, RESTful endpoints
+
+• Authentication: Cookie-based authentication
+
+• Database: SQL Server with Entity Framework Core
+
+• Architecture: Two-project solution — RaceDay.Api and RaceDay.Web
+
+Features
+
+User Authentication
+
+• Register — Create an account as Participant or Organiser
+
+• Login — Sign in with email and password
+
+• Logout — End your session
+
+• Protected pages — Dashboards require login
+
+Participant Dashboard
+
+• View upcoming events
+
+• Register for races
+
+• View race history
+
+Organiser Dashboard
+
+• Create new events
+
+• View registered participants
+
+• Manage race information
+
+How to Run
+
+1. Open the solution in Visual Studio
+
+2. Set up the database:
+
+◦ Open Package Manager Console
+
+◦ Run: Update-Database -Project RaceDay.Api
+
+3. Start the API first — press F5 on RaceDay.Api
+
+4. Then start the Web app — press F5 on RaceDay.Web
+
+5. Go to http://localhost:5000 in your browser
+
+Project Structure
+
+• RaceDay.Api — Backend services and database
+
+• RaceDay.Web — Frontend website and user interface
+
 
